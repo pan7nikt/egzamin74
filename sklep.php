@@ -15,7 +15,7 @@
         <ol>
             <li>warzywa</li>
             <li>owoce</li>
-            <a href="https://terapiasokami.pl/"><li>soki</li></a>
+            <a href="https://terapiasokami.pl/" target="blank"><li>soki</li></a>
         </ol>
     </div>
     <div id="content">
