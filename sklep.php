@@ -24,7 +24,7 @@
          $q=mysqli_query($conn,'SELECT `nazwa`,`ilosc`,`opis`,`cena`,`zdjecie` FROM `produkty` WHERE `Rodzaje_id`=1 OR `Rodzaje_id`=2;');
          while($row=mysqli_fetch_array($q))
          {
-            echo "<div id='pro'>";
+            echo "<div class='produkt'>";
             echo "<img src=".$row['zdjecie']." alt='warzywniak'>"."<br>";
             echo "<h5>".$row['nazwa']."</h5>";
             echo "<p>opis: ".$row['opis']."</p>";
@@ -41,7 +41,7 @@
             Cena: <input type="text" name="cena">
             <input type="submit" value="Dodaj produkt">
         </form>
-        Stronę wykonał: 00000000000
+        Stronę wykonał: 12345678901
         <?php
          $conn=mysqli_connect("localhost","root","","dane2");
          if((isset($_POST['nazwa']))&&(isset($_POST['cena'])))
