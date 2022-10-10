@@ -43,21 +43,20 @@
         </form>
         Stronę wykonał: 12345678901
         <?php
-         $conn=mysqli_connect("localhost","root","","dane2");
-         if((isset($_POST['nazwa']))&&(isset($_POST['cena'])))
-         {
-            if(($_POST['nazwa']=="")||($_POST['cena']==""))
-            {
-               mysqli_close($conn);
-            }
-            else
-            {
-               $naz=$_POST["nazwa"];
-               $cen=$_POST["cena"];
-               $z=mysqli_query($conn,"INSERT INTO `produkty` VALUES (NULL, '1', '4', '$naz', '10', 'puste pole', '$cen', 'owoce.jpg')");
-               mysqli_close($conn);
-            }
-         }
+        $canProceed = true;
+        $conn=mysqli_connect("localhost","root","","dane2");
+        //Nieustawione pola
+        if((!isset($_POST['nazwa']))&&(!isset($_POST['cena']))){$canProceed = false;}
+        //Pola puste
+        if(($_POST['nazwa']=="")||($_POST['cena']=="")){$canProceed = false;echo("Uzupełnij wszystkie pola");}
+
+        if($canProceed)
+        {
+              $naz=$_POST["nazwa"];
+              $cen=$_POST["cena"];
+              $z=mysqli_query($conn,"INSERT INTO `produkty` VALUES (NULL, '1', '4', '$naz', '10', 'puste pole', '$cen', 'owoce.jpg')");
+        }
+        mysqli_close($conn);
         ?>
     </div>
 </body>
