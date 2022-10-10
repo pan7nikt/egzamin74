@@ -20,6 +20,21 @@
     </div>
     <div id="content">
     <?php
+        $errmsg = "";
+        $canProceed = true;
+        $conn=mysqli_connect("localhost","root","","dane2");
+        //Nieustawione pola
+        if((!isset($_POST['nazwa']))||(!isset($_POST['cena']))){$canProceed = false;}
+        //Pola puste
+        if(($_POST['nazwa']=="")||($_POST['cena']=="")){$canProceed = false;$errmsg = "<span style='color:red;'>Uzupełnij wszystkie pola</span>";}
+
+        if($canProceed)
+        {
+              $z=mysqli_query($conn,"INSERT INTO `produkty` VALUES (NULL, '1', '4', '".$_POST["nazwa"]."', '10', '', '".$_POST["cena"]."', 'owoce.jpg')");
+        }
+        mysqli_close($conn);
+        ?>
+    <?php
          $conn=mysqli_connect("localhost","root","","dane2");
          $q=mysqli_query($conn,'SELECT `nazwa`,`ilosc`,`opis`,`cena`,`zdjecie` FROM `produkty` WHERE `Rodzaje_id`=1 OR `Rodzaje_id`=2;');
          while($row=mysqli_fetch_array($q))
@@ -41,23 +56,10 @@
             Cena: <input type="text" name="cena">
             <input type="submit" value="Dodaj produkt">
         </form>
-        Stronę wykonał: 12345678901
         <?php
-        $canProceed = true;
-        $conn=mysqli_connect("localhost","root","","dane2");
-        //Nieustawione pola
-        if((!isset($_POST['nazwa']))&&(!isset($_POST['cena']))){$canProceed = false;}
-        //Pola puste
-        if(($_POST['nazwa']=="")||($_POST['cena']=="")){$canProceed = false;echo("Uzupełnij wszystkie pola");}
-
-        if($canProceed)
-        {
-              $naz=$_POST["nazwa"];
-              $cen=$_POST["cena"];
-              $z=mysqli_query($conn,"INSERT INTO `produkty` VALUES (NULL, '1', '4', '$naz', '10', '', '$cen', 'owoce.jpg')");
-        }
-        mysqli_close($conn);
+        echo($errmsg)
         ?>
+        Stronę wykonał: 12345678901
     </div>
 </body>
 </html>
