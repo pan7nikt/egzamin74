@@ -54,7 +54,7 @@
         {
               $naz=$_POST["nazwa"];
               $cen=$_POST["cena"];
-              $z=mysqli_query($conn,"INSERT INTO `produkty` VALUES (NULL, '1', '4', '$naz', '10', 'puste pole', '$cen', 'owoce.jpg')");
+              $z=mysqli_query($conn,"INSERT INTO `produkty` VALUES (NULL, '1', '4', '$naz', '10', '', '$cen', 'owoce.jpg')");
         }
         mysqli_close($conn);
         ?>
